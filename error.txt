@@ -1,0 +1,2663 @@
+fatal error: unexpected signal during runtime execution
+fatal error: unexpected signal during runtime execution
+[signal SIGSEGV: segmentation violation code=0x2 addr=0xc00024a000 pc=0x441cec]
+
+runtime stack:
+runtime.throw(0x5a438d, 0x2a)
+	/usr/local/go/src/runtime/panic.go:617 +0x72
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:374 +0x4a9
+runtime.stackpoolalloc(0x6f4402, 0x0)
+	/usr/local/go/src/runtime/stack.go:193 +0xcc
+runtime.stackcacherefill(0x7fe7833b0008, 0x2)
+	/usr/local/go/src/runtime/stack.go:262 +0x44
+runtime.stackalloc(0x2000, 0x0, 0x0)
+	/usr/local/go/src/runtime/stack.go:364 +0x143
+runtime.copystack(0xc000227c80, 0x2000, 0x1)
+	/usr/local/go/src/runtime/stack.go:830 +0x7b
+runtime.newstack()
+	/usr/local/go/src/runtime/stack.go:1050 +0x2fd
+runtime.morestack()
+	/usr/local/go/src/runtime/asm_amd64.s:429 +0x8f
+
+goroutine 117 [copystack]:
+runtime.mapaccess1_fast32(0x56a6a0, 0x0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/map_fast32.go:12 +0x1ad fp=0xc000155348 sp=0xc000155340 pc=0x41101d
+runtime.resolveTypeOff(0x5607e0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/type.go:242 +0x87 fp=0xc0001553a8 sp=0xc000155348 pc=0x44fcd7
+runtime.(*_type).typeOff(...)
+	/usr/local/go/src/runtime/type.go:254
+reflect.resolveTypeOff(0x5607e0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/runtime1.go:483 +0x34 fp=0xc0001553d0 sp=0xc0001553a8 pc=0x43be74
+reflect.(*rtype).typeOff(...)
+	/usr/local/go/src/reflect/type.go:693
+reflect.(*rtype).ptrTo(0x5607e0, 0x6)
+	/usr/local/go/src/reflect/type.go:1390 +0x35b fp=0xc000155478 sp=0xc0001553d0 pc=0x47980b
+reflect.Value.Addr(0x5607e0, 0xc00001eb40, 0x198, 0x5d0900, 0x5607e0, 0x0)
+	/usr/local/go/src/reflect/value.go:247 +0x3a fp=0xc000155498 sp=0xc000155478 pc=0x47e2aa
+encoding/json.indirect(0x5607e0, 0xc00001eb40, 0x198, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/usr/local/go/src/encoding/json/decode.go:452 +0x6b5 fp=0xc000155518 sp=0xc000155498 pc=0x4c05b5
+encoding/json.(*decodeState).literalStore(0xc00011b720, 0xc00016a99b, 0xc, 0x65, 0x5607e0, 0xc00001eb40, 0x198, 0x0, 0x61, 0xc00011b748)
+	/usr/local/go/src/encoding/json/decode.go:853 +0x266 fp=0xc000155878 sp=0xc000155518 pc=0x4c3c76
+encoding/json.(*decodeState).value(0xc00011b720, 0x5607e0, 0xc00001eb40, 0x198, 0x5607e0, 0xc00001eb40)
+	/usr/local/go/src/encoding/json/decode.go:395 +0x1ef fp=0xc0001558e0 sp=0xc000155878 pc=0x4bfdbf
+encoding/json.(*decodeState).object(0xc00011b720, 0x5570c0, 0xc00001eb40, 0x16, 0xc00011b748, 0xc00001867b)
+	/usr/local/go/src/encoding/json/decode.go:763 +0x1899 fp=0xc000155ba0 sp=0xc0001558e0 pc=0x4c2bb9
+encoding/json.(*decodeState).value(0xc00011b720, 0x5570c0, 0xc00001eb40, 0x16, 0xc000155c50, 0x4d2337)
+	/usr/local/go/src/encoding/json/decode.go:381 +0x6e fp=0xc000155c08 sp=0xc000155ba0 pc=0x4bfc3e
+encoding/json.(*decodeState).unmarshal(0xc00011b720, 0x5570c0, 0xc00001eb40, 0xc00011b748, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:179 +0x1fe fp=0xc000155c90 sp=0xc000155c08 pc=0x4bf45e
+encoding/json.Unmarshal(0xc00016a993, 0x61, 0x6d, 0x5570c0, 0xc00001eb40, 0x0, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:106 +0x123 fp=0xc000155cd8 sp=0xc000155c90 pc=0x4bee43
+main.handleConnInClient.func1(0xc000012cc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:58 +0xf3 fp=0xc000155fd8 sp=0xc000155cd8 pc=0x542ff3
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc000155fe0 sp=0xc000155fd8 pc=0x457d01
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 1 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783354f08, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000e6098, 0x72, 0x0, 0x0, 0x59c57a)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc0000e6080, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1ba
+net.(*netFD).accept(0xc0000e6080, 0xc000010001, 0x0, 0x0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc0000a40e0, 0xc0000bbea0, 0xc0000bbea8, 0x10)
+	/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc0000a40e0, 0x5a6148, 0x5cf0e0, 0xc000010090, 0x0)
+	/usr/local/go/src/net/tcpsock.go:260 +0x48
+main.main()
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:305 +0x5a2
+
+goroutine 20 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783354d68, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000e6218, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0000e6200, 0xc0000c4400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0000e6200, 0xc0000c4400, 0x400, 0x400, 0x5a, 0x1b4, 0x1c7)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a4148, 0xc0000c4400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a4148)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 21 [chan receive]:
+main.handleConnInClient.func1(0xc0000a6b40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 24 [chan receive]:
+main.handleConnInClient.func1(0xc0000a6ea0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 35 [chan receive]:
+main.handleConnInClient.func1(0xc00012c0c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 25 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7833566f8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000196e18, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000196e00, 0xc0000c4c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000196e00, 0xc0000c4c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42b0, 0xc0000c4c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42b0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:[signal 309 +0x58eSIGSEGV: segmentation violation code=0x2
+
+goroutine 38 [chan receive]:
+main.handleConnInClient.func1(0xc00012c3c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient addr=0xc00027e000 pc=
+0x441cec]
+
+runtime stack:
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.goruntime.throw(0x5a438d, 0x2a)
+	:53 +/usr/local/go/src/runtime/panic.go:617 +0x8f0x72
+runtime.sigpanic
+
+goroutine ()
+	40 [chan receive]:
+main.handleConnInClient.func1(/usr/local/go/src/runtime/signal_unix.go:374 +0x4a9
+0xc00012c960)
+	runtime.stackpoolalloc(0x6f4402, /mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:560x0)
+	 +0x70
+/usr/local/go/src/runtime/stack.go:193 +0xcc
+runtime.stackcacherefill(0x7f6cdf8f1460, 0x2)
+	/usr/local/go/src/runtime/stack.gocreated by main.handleConnInClient
+:262 +0x44
+runtime.stackalloc(0x2000, 0x0, 0x0)
+	/usr/local/go/src/runtime/stack.go:364 +0x143
+runtime.copystack(0xc00024b500, 0x2000, 0xc000022501)
+	/usr/local/go/src/runtime/stack.go:830 +0x7b
+runtime.newstack()
+	/usr/local/go/src/runtime/stack.go:1050 +0x2fd
+runtime.morestack()
+	/usr/local/go/src/runtime/asm_amd64.s:429 +0x8f
+
+goroutine 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:118 [copystack]:
+runtime.mapaccess1_fast32(0x56a6a053 +0x8f
+
+goroutine , 0x0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/map_fast32.go:12 +0x1ad42 [chan receive]:
+main.handleConnInClient.func1(0xc00012cb40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 26 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4180)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 43 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783356628, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a398, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a380, 0xc00014b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a380, 0xc00014b000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c038, 0xc00014b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c038)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 44 [chan receive]:
+main.handleConnInClient.func1(0xc00012cd20)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 27 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783356558, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000196e98, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000196e80, 0xc0000c5000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000196e80, 0xc0000c5000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42b8, 0xc0000c5000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42b8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 28 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4240)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 45 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783356488, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a418, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a400, 0xc00014b400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a400, 0xc00014b400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c040, 0xc00014b400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c040)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 46 [chan receive]:
+main.handleConnInClient.func1(0xc00012cd80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 29 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7833563b8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000196f18, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000196f00,  fp=0xc0000c54000xc000266348, 0x400 sp=, 0xc0002663400x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000196f00, 0xc0000c5400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42c0, 0xc0000c5400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 30 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4300)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 47 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7833562e8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a498, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a480, 0xc00014b800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a480, 0xc00014b800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c048, 0xc00014b800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c048)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 48 [chan receive]:
+main.handleConnInClient.func1(0xc00012cde0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine  pc=49 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7833562180x41101d
+runtime.resolveTypeOff(0x5607e0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/type.go, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:242 +0x87 fp=0xc0002663a8 sp=0xc000266348 pc=0x44fcd7
+runtime.(*_type).typeOff(...)
+	/usr/local/go/src/runtime/type.go:254
+reflect.resolveTypeOff(0x5607e0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/runtime1.go:483 +0x34 fp=0xc0002663d0 sp=0xc0002663a8 pc=0x43be74
+reflect.(*rtype).typeOff(...)
+	/usr/local/go/src/reflect/type.go:693
+reflect.(*rtype).ptrTo(0x5607e0, 0x6)
+	/usr/local/go/src/reflect/type.go:1390 +0x35b fp=0xc000266478 sp=0xc0002663d0 pc=0x47980b
+reflect.Value.Addr(0x5607e0, 0xc00020c1c0, 0x198, 0x5d0900, 0x5607e0, 0x0)
+	/usr/local/go/src/reflect/value.go:247 +0x3a fp=0xc000266498 sp=0xc000266478 pc=0x47e2aa
+encoding/json.indirect(0x5607e0, 0xc00020c1c0, 0x198, 0x0, 0x0, 0x0:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a518, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a500, 0xc00014bc00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a500, 0xc00014bc00, 0x400, 0x400, , 0x0, 0x0, 0x61, 0x0, 0x130x0, 0x0)
+, ...)
+	/usr/local/go/src/encoding/json/decode.go:452 +	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read0x6b5( fp=0xc00013c050, 0xc00014bc00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0xc0002665180x69
+main.handleConnInClient( sp=0x5cf0e0, 0xc000266498 pc=0x4c05b50xc00013c050)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go
+:246 +0x177
+created by main.mainencoding/json.(*decodeState).literalStore(0xc00020e500
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:, 0xc00020621b, 309 +0x58e0xc, 0x65, 0x5607e0, 0xc00020c1c0, 0x198, 0x0, 0x61, 0xc00020e528)
+	/usr/local/go/src/encoding/json/decode.go:853 +0x266 fp=0xc000266878 sp=0xc000266518 pc=0x4c3c76
+encoding/json.(*decodeState).value(0xc00020e500, 0x5607e0, 0xc00020c1c0, 0x198, 0x5607e0, 0xc00020c1c0)
+	/usr/local/go/src/encoding/json/decode.go:395 +0x1ef fp=0xc0002668e0 sp=0xc000266878 pc=0x4bfdbf
+encoding/json.(*decodeState).object(0xc00020e500, 0x5570c0, 0xc00020c1c0, 0x16, 0xc00020e528, 0xc00020a17b)
+	/usr/local/go/src/encoding/json/decode.go:763 +0x1899 fp=0xc000266ba0 sp=0xc0002668e0 pc=0x4c2bb9
+encoding/json.(*decodeState).value(0xc00020e500, 0x5570c0, 0xc00020c1c0, 0x16, 0xc000266c50, 0x4d2337)
+	/usr/local/go/src/encoding/json/decode.go:381 +0x6e fp=0xc000266c08 sp=0xc000266ba0 pc=0x4bfc3e
+encoding/json.(*decodeState).unmarshal(0xc00020e500, 0x5570c0, 0xc00020c1c0, 0xc00020e528, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:179 +0x1fe fp=0xc000266c90 sp=0xc000266c08 pc=0x4bf45e
+encoding/json.Unmarshal(0xc000206213, 0x61, 0x6d, 0x5570c0, 0xc00020c1c0, 0x0, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:106 +0x123 fp=0xc000266cd8 sp=0xc000266c90 pc=0x4bee43
+main.handleConnInClient.func1(0xc000155380)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:58 +0xf3 fp=0xc000266fd8 sp=0xc000266cd8 pc=0x542ff3
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc000266fe0 sp=0xc000266fd8 pc=0x457d01
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 1 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf894f08, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000d2098, 0x72, 0x0, 0x0, 0x59c57a)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc0000d2080, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1ba
+net.(*netFD).accept(0xc0000d2080, 0xc000166001, 0x0, 0x0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc0000100f0, 0xc0000abea0, 
+0xc0000abea8, 
+goroutine 0x10)
+	50 [chan receive]:
+main.handleConnInClient.func1(0xc00012ce40/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc0000100f0, 0x5a6148, 0x5cf0e0, 0xc000166090, 0x0)
+	/usr/local/go/src/net/tcpsock.go:260 +0x48
+main.main()
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:305 +0x5a2
+
+goroutine 18 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf894d68, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000124118, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000124100, 0xc00012a000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+created by net.(*netFD).Read(0xc000124100, 0xc00012a000main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53, 0x400,  +0x8f
+
+goroutine 51 [IO wait0x400, ]:
+0x5a, internal/poll.runtime_pollWait(0x7fe7833561480x147, 0x15a)
+	/usr/local/go/src/net/fd_unix.go:202, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait +0x4f
+(net.(*conn).Read(0xc00010c0600xc00013a598, 0x72, 0x400, 0x400, 0xc00012a000, , 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:870x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c060)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 19 [chan receive]:
+main.handleConnInClient.func1(0xc000120060)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a580:56 +, 0xc0001c8000, 0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 25 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf7e16c8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019ad18, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019ad00, 0xc00012ac00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019ad00, 0xc00012ac00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c1c0, 0xc00012ac00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c1c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 22 [chan receive]:
+main.handleConnInClient.func1(0xc0001200c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 8 [chan receive]:
+main.handleConnInClient.func1(0xc000012e40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 10 [chan receive]:
+main.handleConnInClient.func1(0xc000013020)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+0x400, 0x400, 0x0, 0x0created by main.handleConnInClient, 0x0)
+
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go	/usr/local/go/src/internal/poll/fd_unix.go:169:53 +0x8f
+
+goroutine 35 [IO wait]:
+internal/poll.runtime_pollWait( +0x19b
+0x7f6cdf7e15f8, 0x72, net.(*netFD).Read(0xc00013a5800xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +, 0xc0001c8000, 0x56
+internal/poll.(*pollDesc).wait0x400, (0xc00017a1180x400, , 0x72, 0x400, 0x4000x61, 0x0, 0x13)
+	, 0xffffffffffffffff)
+	/usr/local/go/src/net/fd_unix.go:/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+202 +0x4f	/usr/local/go/src/internal/poll/fd_poll_runtime.go
+net.(*conn).Read(0xc00013c058:92
+internal/poll.(*FD).Read(0xc00017a100, , 0xc0001c8000, 0x400, 0x400, 0x00xc0001bc000, 0x400, 0x400, 0x0, 0x0, , 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:0x0)
+	/usr/local/go/src/net/net.go169 +0x19b
+net.(*netFD).Read(0xc00017a100, 0xc0001bc000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166010, 0xc0001bc000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166010)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c058)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 12 [chan receive]:
+main.handleConnInClient.func1(0xc000013200)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 24 [chan receive]:
+main.handleConnInClient.func1(0xc000120cc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 26 [chan receive]:
+main.handleConnInClient.func1(0xc0001b1800)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 36 [chan receive]:
+main.handleConnInClient.func1(0xc000154600)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 37 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf7e1528, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a198, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a180, 0xc0001bc400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a180, 0xc0001bc400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166018, 0xc0001bc400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166018)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 38 [chan receive]:
+main.handleConnInClient.func1(0xc0001546c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 27 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf7e1458, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+(0xc00019ad98, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	:87 +0x9b
+	:92
+(0xc00019ad80, 0xc00012b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	:169 +0x19b
+(0xc00019ad80, 0xc00012b000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	:202 +0x4f
+(0xc00010c1c8, 0xc00012b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	:177 +0x69
+(0x5cf0e0, 0xc00010c1c8)
+	:246 +0x177
+
+	:309 +0x58e
+
+28 []:
+(0xc0001b1860)
+	:56 +0x70
+
+	:53 +0x8f
+
+13 []:
+(0x7f6cdf7e1388, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+(0xc0000d2398, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	:87 +0x9b
+	:92
+internal/poll.(*FD).Read(0xc0000d2380, 0xc0000b5400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0000d2380, 0xc0000b5400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010130, 0xc0000b5400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010130)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 14 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf7e12b8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000d2418, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+		/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309( +0xc0000d24000x58e
+
+goroutine 52 [chan receive]:
+main.handleConnInClient.func1(0xc00012cea0, )
+0xc0000b5000, 0x400, 0x400	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 31 [IO wait]:
+(0x7fe783356078, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000196f98, 0x72, 0x400, 0x400, , 0xffffffffffffffff)
+0x0, 	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000196f80, 0xc0000c5800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000196f80, 0xc0000c5800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42c8, 0xc0000c5800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42c8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 32 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4420)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 33 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783355fa8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000197018, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000197000, 0xc0000c5c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000197000, 0xc0000c5c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42d0, 0xc0000c5c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42d0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 66 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4480)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:560x0 +, 0x0)
+0x70	/usr/local/go/src/internal/poll/fd_unix.go:
+created by main.handleConnInClient169
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go +0x19b
+:53 +0x8f
+
+net.(*netFD).Readgoroutine 5 [(IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0ea8, 0xc0000d24000x72, 0xffffffffffffffff, )
+0xc0000b5000, 0x400	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+, internal/poll.(*pollDesc).wait(0xc0001d40180x400, 0x61, , 0x72, 0x0, 0x130x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4000, 0xc0001d8000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4000, 0xc0001d8000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010018, 0xc0001d8000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010018)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 6 [chan receive]:
+main.handleConnInClient.func1(0xc0000121e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 7 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0dd8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4098, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4080, 0xc0001d8800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4080, 0xc0001d8800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010020, 0xc0001d8800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010020)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 8 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0d08, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4118, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead)
+(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go	:92
+internal/poll.(*FD).Read(0xc0001d4100/usr/local/go/src/net/fd_unix.go:202, 0xc0001d8400,  +0x4f
+0x400, 0x400net.(*conn).Read(0xc000010138, 0xc0000b5000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010138)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+, 0x0, 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 15 [chan receive]:
+main.handleConnInClient.func1(0xc0000133200x0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go::56 +0x70
+created by main.handleConnInClient169 +0x19b
+net.(*netFD).Read(
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 16 [chan receive]:
+0xc0001d4100main.handleConnInClient.func1(, 0xc0001d8400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	0xc000013380)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70/usr/local/go/src/net/fd_unix.go:202
+created by main.handleConnInClient
+ +0x4f
+net.(*conn).Read(0xc000010028, 0xc0001d8400, 0x400, 0x400, 0x0, 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go0x0, 0x0:53 +0x8f
+
+goroutine 39)
+	/usr/local/go/src/net/net.go [IO wait:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010028)
+]:
+	internal/poll.runtime_pollWait(/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x7f6cdf7e11e8, 0x72, 0x177
+created by 0xffffffffffffffff)
+	main.main
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 0xc00017a218, 0x729 [chan receive]:
+main.handleConnInClient.func1(, 0x400, 0xc000012240)
+0x400, 0xffffffffffffffff	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 10 [chan receive]:
+main.handleConnInClient.func1(0xc000012300)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 67 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0c38, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000197098, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000197080, 0xc0001e4000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000197080, 0xc0001e4000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42d8, 0xc0001e4000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42d8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 68 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4540)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 53 [IO wait]:
+internal/poll.runtime_pollWait()
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b0x7fe7832d0b68, 0x72
+, 0xffffffffffffffff)
+internal/poll.(*pollDesc).waitRead(...)
+		/usr/local/go/src/runtime/netpoll.go:/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+182internal/poll.(*FD).Read(0xc00017a200 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a618, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a600, 0xc0001c8400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a600, 0xc0001c8400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c060, 0xc0001c8400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c060)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 54 [chan receive]:
+main.handleConnInClient.func1(0xc00012cf60)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 55 [IO wait]:
+(0x7fe7832d0a98, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a698, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a680, 0xc0001c8800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a680, 0xc0001c8800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c068, 0xc0001c8800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c068)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 56 [chan receive]:
+main.handleConnInClient.func1(0xc00012d020)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 57 [IO wait]:
+(0x7fe7832d09c8, , 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:0xc0001bc800, 0x400, 0x400, 0x0182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a718, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87,  +0x9b
+0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a200, 0xc0001bc800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:internal/poll.(*pollDesc).waitRead202 +0x4f
+net.(*conn).Read((...)
+0xc000166020, 0xc0001bc800	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a700, 0xc0001c8c00, 0x400, 0x400, 0x0, 0x0, , 0x400, 0x0)
+	0x400, 0x0/usr/local/go/src/internal/poll/fd_unix.go:169, 0x0, 0x0)
+	 +0x19b
+/usr/local/go/src/net/net.go:177 +0x69
+net.(*netFD).Read(0xc00013a700main.handleConnInClient(0x5cf0e0, 0xc000166020)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine , 0xc0001c8c00, 40 [chan receive0x400, 0x400]:
+, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(main.handleConnInClient.func1(0xc0001547e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x700xc00013c070, 0xc0001c8c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 
+0xc00013c070)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 50 [IO wait
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine ]:
+58 [chan receive]:
+main.handleConnInClient.func1internal/poll.runtime_pollWait(0xc00012d0e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:(0x7f6cdf7e1118, 56 +0x700x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +
+0x56
+internal/poll.(*pollDesc).wait(0xc0000d2498created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:, 0x72, 53 +0x8f0x400, 0x400
+
+goroutine , 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+11 [IO wait	/usr/local/go/src/internal/poll/fd_poll_runtime.go:]:
+92
+internal/poll.(*FD).Readinternal/poll.runtime_pollWait(0x7fe7832d08f8(0xc0000d2480, , 0x72, 0xc0000b5800, 0x400, 0x400, 0x00xffffffffffffffff, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:)
+	/usr/local/go/src/runtime/netpoll.go:182 +169 +0x19b
+net.(*netFD).Read(0xc0000d2480, 0xc0000b5800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+0x56net.(*conn).Read(0xc000010140
+, 0xc0000b5800, internal/poll.(*pollDesc).wait(0xc0001d41980x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go: +0x6987 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4180, 0xc0001d9000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4180, 0xc0001d9000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010030, 0xc0001d9000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010030)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 12 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0828, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4218, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4200, 0xc0001d9400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +
+0x19b
+net.(*netFD).Read(0xc0001d4200, 0xc0001d9400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:main.handleConnInClient(0x5cf0e0202 +0x4f, 0xc000010140)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:
+net.(*conn).Read(0xc000010038, 0xc0001d9400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010038)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 13 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0758246 +0x177
+created by main.main
+, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4298, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +:309 +0x58e
+
+goroutine 0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4280, 0xc0001d8c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4280, 0xc0001d8c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010040, 0xc0001d8c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010040)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 14 [chan receive]:
+main.handleConnInClient.func1(0xc0000123c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 15 [chan receive]:
+main.handleConnInClient.func1(0xc000012480)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 16 [chan receive]:
+main.handleConnInClient.func1(0xc000012540)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 59 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0688, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a798, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a78051, 0xc0001c9000 [chan receive]:
+, 0x400, 0x400, 0x0, 0x0main.handleConnInClient.func1(0xc0000133e0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a780, 0xc0001c9000)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go, 0x400:53 +0x8f, 0x400, 
+
+goroutine 410x61,  [IO wait]:
+0x0, 0x13internal/poll.runtime_pollWait()
+	/usr/local/go/src/net/fd_unix.go:0x7f6cdf7e1048, 202 +0x4f
+net.(*conn).Read(0xc00013c078, 0xc0001c9000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c078)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 60 [chan receive]:
+main.handleConnInClient.func1(0xc00012d1a00x72, 0xffffffffffffffff)
+)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go	/usr/local/go/src/runtime/netpoll.go:182:56 + +0x56
+0x70
+internal/poll.(*pollDesc).wait(created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 82 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d05b8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4318, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4300, 0xc0001d9800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4300, 0xc0001d9800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:0xc00017a298, 0x72, 0x400, 0x400202 +0x4f, 0xffffffffffffffff)
+
+net.(*conn).Read(0xc000010048, 0xc0001d9800, 	/usr/local/go/src/internal/poll/fd_poll_runtime.go0x400, :870x400, 0x0,  +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:0x0, 92
+internal/poll.(*FD).Read(0xc00017a280, 0x0)
+	0xc0001bcc00, 0x400, 0x400, 0x0, /usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010048)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main0x0, 
+0x0	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b +0x58e
+
+goroutine 83 [chan receive]:
+main.handleConnInClient.func1(0xc000012600)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+net.(*netFD).Read(0xc00017a280, 0xc0001bcc00
+goroutine 61 [, 0x400IO wait]:
+, internal/poll.runtime_pollWait(0x7fe7832d04e8, 0x72, 0x400, 0x610xffffffffffffffff)
+	, 0x0, /usr/local/go/src/runtime/netpoll.go:1820x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f +0x56
+
+net.(*conn).Read(0xc000166028, 0xc0001bcc00, 0x400, 0x400, 0x0, 0x0internal/poll.(*pollDesc).wait(0xc00013a818, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a800, 0xc0001c9400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a800, 0xc0001c9400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c080, 0xc0001c9400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c080)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 62 [chan receive]:
+main.handleConnInClient.func1(0xc00012d260)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 63 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0418, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a898, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013a880, 0xc0001c9800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a880, 0xc0001c9800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c088, 0xc0001c9800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c088)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 64 [chan receive]:
+main.handleConnInClient.func1(0xc00012d320)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 84 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0348, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4398, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4380, 0xc0001d9c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4380, 0xc0001d9c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010050, 0xc0001d9c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010050)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 85 [chan receive]:
+main.handleConnInClient.func1(0xc0000126c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 86 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0278, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4418, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4400, 0xc000206000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4400, 0xc000206000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010058, 0xc000206000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010058)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 87 [chan receive]:
+main.handleConnInClient.func1(0xc000012780)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 65 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d01a8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013a918, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +, 0x9b0x0)
+	
+internal/poll.(*pollDesc).waitRead(...)
+/usr/local/go/src/net/net.go:	/usr/local/go/src/internal/poll/fd_poll_runtime.go177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166028)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +:92
+0x177
+internal/poll.(*FD).Read(0xc00013a900, 0xc000210000, 0x400created by main.main
+, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a900, 0xc000210000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c090, 0xc000210000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c090)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go309 +0x58e
+
+goroutine :24642 [chan receive]:
+main.handleConnInClient.func1( +0x177
+0xc0001548a0)
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 98	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 43 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf7e0f78, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a318, 0x72, 0x400, 0x400,  [IO wait]:
+0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9binternal/poll.runtime_pollWait(0x7fe7832d00d8, 0x72, 
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:920xffffffffffffffff)
+	
+internal/poll.(*FD).Read(0xc00017a300, 0xc0001bd000, 0x400/usr/local/go/src/runtime/netpoll.go:182 +, 0x4000x56
+internal/poll.(*pollDesc).wait, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +(0xc00013a9980x19b
+, 0x72, 0x400, 0x400, net.(*netFD).Read(0xffffffffffffffff)
+0xc00017a300, 	/usr/local/go/src/internal/poll/fd_poll_runtime.go0xc0001bd000, :87 +0x400, 0x4000x9b
+internal/poll.(*pollDesc).waitRead, 0x61(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(, 0x0, 0xc00013a980, 0xc0001c9c00, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166030, 0xc0001bd000, 0x400, 0x400, 0x0, 0x0, 0x0)
+0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013a980, 0xc0001c9c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c098, 0xc0001c9c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c098)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 99 [chan receive]:
+main.handleConnInClient.func1(0xc00012d3e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 100 [chan receive]:
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166030)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 44 [chan receive]:
+main.handleConnInClient.func1(0xc000154960)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 45 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854ea8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a398, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a380, 0xc0001bd400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a380, 0xc0001bd400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166038, 0xc0001bd400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166038)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 46 [chan receive]:
+main.handleConnInClient.func1(0xc000154a20)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:main.handleConnInClient.func1(0xc00012d4a056 +0x70
+)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.gocreated by main.handleConnInClient
+:56	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go +0x70
+:53created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 88 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7832d0008, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4498, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+ +0x8f
+
+goroutine 52 [IO waitinternal/poll.(*FD).Read(0xc0001d4480]:
+, 0xc000206400, 0x400, 0x400, 0x0internal/poll.runtime_pollWait(0x7f6cdf854dd8, , 0x0, 0x00x72, )
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000d2518, 0x72, 0x4000x19b
+, 0x400, net.(*netFD).Read(0xc0001d44800xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:, 0xc000206400, 92
+internal/poll.(*FD).Read(0xc0000d2500, 0xc0000b5c00, 0x400, 0x400, 0x400, 0x0, 0x00x400, , 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+0x61, 0x0net.(*netFD).Read(0xc0000d2500, 0xc0000b5c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010148, 0xc0000b5c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010148)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 53 [chan receive]:
+main.handleConnInClient.func1(0xc0000134a0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 47 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854d08, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a418, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a400, 0xc0001bd800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a400, 0xc0001bd800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166040, 0xc0001bd800, 0x400, 0x400, 0x0, 0x0, , 0x13)
+	/usr/local/go/src/net/fd_unix.go:0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166040)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main202 +0x4f
+
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:net.(*conn).Read(309 +0xc000010060, 0xc000206400, 0x400, 0x58e
+
+goroutine 48 [chan receive]:
+main.handleConnInClient.func1(0xc000154a80)
+0x400, 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+0x0, 0x0, created by main.handleConnInClient
+	0x0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 29 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854c38, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019ae18, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+/usr/local/go/src/net/net.gointernal/poll.(*FD).Read:(177 +0x69
+main.handleConnInClient0xc00019ae00(0x5cf0e0, 0xc00012b400, 0x400, , 0xc000010060)
+	0x400/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:, 0x0, 2460x0, 0x0 +0x177
+)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019ae00, created by 0xc00012b400, 0x400, 0x400, 0x61main.main
+	, 0x0, /mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:3090x13)
+	 +0x58e
+
+goroutine 89 [chan receive]:
+main.handleConnInClient.func1(/usr/local/go/src/net/fd_unix.go:2020xc000012840)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 101 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318f68, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013aa18, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013aa00, 0xc000210800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013aa00, 0xc000210800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c0a0, 0xc000210800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00013c0a0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 102 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318e98, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013aa98, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013aa80, 0xc000206800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013aa80, 0xc000206800, 0x400, 0x400, 0x61 +, 0x0, 0x4f0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +
+net.(*conn).Read(0xc00010c1d0, 0xc00012b400, 0x4000x4f
+net.(*conn).Read, 0x400(0xc00013c0a8, , 0x00xc000206800, 0x400, 0x400, 0x0, , 0x0, 0x00x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c1d0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:)
+	/usr/local/go/src/net/net.go:246 +177 +0x690x177
+created by 
+main.handleConnInClient(main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:0x5cf0e0, 0xc00013c0a8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 103 [309 +0x58e
+IO wait]:
+
+internal/poll.runtime_pollWait(0x7fe783318dc8goroutine 30, 0x72 [chan receive]:
+, 0xffffffffffffffffmain.handleConnInClient.func1()
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00013ab18, 0x72, 0x400, 0x4000xc0001b18c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70, 0xffffffffffffffff)
+
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00013ab00, 0xc000210400, 0x400, 0x400, 0x0, goroutine 31 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854b68, 0x72, 0xffffffffffffffff0x0)
+	/usr/local/go/src/runtime/netpoll.go:, 0x0)
+	182 +0x56/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00013ab00, 0xc000210400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00013c0b0, 0xc000210400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 
+internal/poll.(*pollDesc).wait(0xc00019ae980xc00013c0b0)
+	, 0x72, 0x400, 0x400, 0xffffffffffffffff/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 104 [chan receive]:
+main.handleConnInClient.func1(0xc00012d620)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 105 [chan receive]:
+main.handleConnInClient.func1(0xc00012d6e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 90 [chan receive]:
+main.handleConnInClient.func1(0xc000012900)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 69 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318cf8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000197118, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000197100, 0xc0001e4400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000197100, 0xc0001e4400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000a42e0, 0xc0001e4400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000a42e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 70 [chan receive]:
+main.handleConnInClient.func1(0xc0001b4600)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 91 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318c28, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4518, 0x72, )
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:0x400, 0x40087 +0x9b
+, internal/poll.(*pollDesc).waitRead(...)
+0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4500, 0xc000207000, 0x400, 0x400, 0x0, 0x0	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92, 0x0
+internal/poll.(*FD).Read(0xc00019ae80)
+	/usr/local/go/src/internal/poll/fd_unix.go:, 0xc00012b800169 +, 0x400, 0x19b
+0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019ae80, 0xc00012b800, 0x400, 0x400, 0x61, 0x0, net.(*netFD).Read(0xc0001d45000x13)
+	, 0xc000207000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(/usr/local/go/src/net/fd_unix.go:202 +0xc00010c1d8, 0xc00012b800, 0x4f
+net.(*conn).Read(0xc000010068, 0xc000207000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x690x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010068)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go
+:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 92 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318b58, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4598, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4580, 0xc000207400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4580, 0xc000207400, 0x400, 0x400, 0x61, 0x5cf0e00x0, 0xc00010c1d8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by , 0x13)
+main.main
+		/usr/local/go/src/net/fd_unix.go:202 +0x4f/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309
+net.(*conn).Read( +0x58e
+
+goroutine 32 [chan receive]:
+main.handleConnInClient.func1(0xc0001b1920)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 49 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854a98, 0x720xc000010070, 0xc000207400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.gomain.handleConnInClient(0x5cf0e0, 0xc000010070)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a498, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a480, 0xc0001bdc00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a480, 0xc0001bdc00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166048, 0xc0001bdc00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166048)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 66 [chan receive]:
+main.handleConnInClient.func1(0xc000154b40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 33 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf8549c8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(created by 0xc00019af18, 0x72main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +, 0x400, 0x58e0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:
+87
+goroutine 93 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe783318a88, 0x72, 0xffffffffffffffff +0x9b
+)
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019af00, 0xc00012bc00, 	/usr/local/go/src/runtime/netpoll.go:0x400, 0x400, 0x0, 0x0182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4618, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0001d4600, 0xc000207800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4600, 0xc000207800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010078, 0xc000207800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010078)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 94 [IO wait]:
+internal/poll.runtime_pollWait(0x7fe7833189b8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4698, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92, 0x0)
+
+internal/poll.(*FD).Read(0xc0001d4680, 0xc000207c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4680, 0xc000207c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+0x4f
+net.(*netFD).Read(0xc00019af00, 0xc00012bc00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c1e0, 0xc00012bc00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, net.(*conn).Read(0xc000010080, 0xc00010c1e0)
+0xc000207c00, 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:2460x400, 0x400 +0x177
+created by main.main
+, 0x0, 	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:3090x0, 0x0)
+ +0x58e
+
+goroutine 82 [chan receive	/usr/local/go/src/net/net.go:177]:
+ +0x69main.handleConnInClient.func1(0xc0001b1980)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56
+main.handleConnInClient(0x5cf0e0, 0xc000010080)
+ +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246:53 +0x8f
+
+goroutine  +0x17783 [IO wait
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+]:
+internal/poll.runtime_pollWait(goroutine 95 [runnable0x7f6cdf8548f8, ]:
+0x72, 0xffffffffffffffffsyscall.Syscall()
+	/usr/local/go/src/runtime/netpoll.go:182 +0x0, 0x580x56
+internal/poll.(*pollDesc).wait, 0xc000248000(0xc00019af98, 0x400, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019af80, 0xc000202000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019af80, 0xc000202000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c1e8, 0xc000202000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c1e8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 67 [chan receive]:
+main.handleConnInClient.func1(0xc000154c00)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 84 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854828, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b018, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b000, 0xc000204000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b000, 0xc000204000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c1f0, 0xc000204000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c1f0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 85 [chan receive]:
+main.handleConnInClient.func1(0xc0001b19e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 54 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854758, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000d2598, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0000d2580, 0xc000220000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0000d2580, 0xc000220000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010150, 0xc000220000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010150)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 55 [chan receive]:
+main.handleConnInClient.func1(0xc0000135c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 98 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854688, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000222018, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000222000, 0xc00022c400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000222000, 0xc00022c400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000224000, 0xc00022c400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000224000)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 99 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf8545b8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000222098, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000222080, 0xc00022c800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000222080, 0xc00022c800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000224008, 0xc00022c800, 0x400, 0x400, 0x0, , 0x00xffffffffffffffff, 0x0, 0xb)
+, 0x0)
+	/usr/local/go/src/net/net.go:177	/usr/local/go/src/syscall/asm_linux_amd64.s: +0x6918 +0x5
+
+syscall.read(0x58, 0xc000248000, 0x400, main.handleConnInClient(0x5cf0e0, 0xc000224008)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 100 [IO wait]:
+internal/poll.runtime_pollWait0x400, 0x0, 0x0, 0x55fda0(0x7f6cdf8544e8, )
+	/usr/local/go/src/syscall/zsyscall_linux_amd64.go:0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:732 +0x5a
+syscall.Read(...)
+	/usr/local/go/src/syscall/syscall_unix.go182 +0x56
+internal/poll.(*pollDesc).wait(0xc000222118:172
+, 0x72, internal/poll.(*FD).Read(0xc0001d47000x400, 0x400, 0xc000248000, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000222100, 0xc00022c000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000222100, 0xc00022c000, 0x400, 0x400, 0x61, , 0x4000x0, , 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:165 +0x131
+net.(*netFD).Read(0xc0001d4700, 0xc000248000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010088, 0xc000248000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000010088)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x13)
+	0x58e
+/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000224010, 0xc00022c000, 0x400
+goroutine 96 [IO wait]:
+internal/poll.runtime_pollWait, 0x400, (0x7fe783318818, 0x0, 0x0, 0x72, 0xffffffffffffffff0x0)
+	/usr/local/go/src/net/net.go:177 +)
+	0x69
+main.handleConnInClient(0x5cf0e0, 0xc000224010/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0001d4798, 0x72, 0x400, 0x400, )
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go0xffffffffffffffff)
+	:246 +0x177
+created by main.main/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read:309 +0x58e
+
+goroutine (0xc0001d4780, 0xc000206c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0001d4780, 0xc000206c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010090, 0xc000206c00, 0x400, 0x400, 0x0, 0x0101, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0 [, 0xc000010090)
+chan receive]:
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:main.handleConnInClient.func1(0xc00022a000)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56246 +0x70
+ +0x177
+created by main.handleConnInClient
+created by main.main
+		/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53309 +0x8f
+
+goroutine 102 [chan receive]:
+main.handleConnInClient.func1(0xc00022a0c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+0x58egoroutine 
+
+goroutine 97 [runnable]:
+103 [chan receive]:
+main.handleConnInClient.func1(0xc00022a180)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8fmain.handleConnInClient.func1(0xc0000129c0
+
+goroutine 68)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 114 [chan receive]:
+main.handleConnInClient.func1(0xc000012a80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 115 [chan receive]:
+main.handleConnInClient.func1(0xc000012b40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 116 [chan receive]:
+main.handleConnInClient.func1(0xc000012c00)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 118 [runnable]:
+main.handleConnInClient.func1(0xc000012d80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+ [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854418, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a518, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a500, 0xc000202800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a500, 0xc000202800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166050, 0xc000202800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166050)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 69 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854348, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a598, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a580, 0xc000202c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a580, 0xc000202c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166058, 0xc000202c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166058)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 70 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854278, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a618, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a600, 0xc000203000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a600, 0xc000203000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166060, 0xc000203000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166060)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 71 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf8541a8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a698, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a680, 0xc000203400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a680, 0xc000203400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166068, 0xc000203400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166068)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 72 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf8540d8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a718, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a700, 0xc000202400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a700, 0xc000202400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166070, 0xc000202400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166070)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 73 [chan receive]:
+main.handleConnInClient.func1(0xc000154cc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 74 [chan receive]:
+main.handleConnInClient.func1(0xc000154d80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 75 [chan receive]:
+main.handleConnInClient.func1(0xc000154e40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 76 [chan receive]:
+main.handleConnInClient.func1(0xc000154f00)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 77 [chan receive]:
+main.handleConnInClient.func1(0xc000154fc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 86 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf854008, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b098, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b080, 0xc000204400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b080, 0xc000204400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c1f8, 0xc000204400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c1f8)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 87 [chan receive]:
+main.handleConnInClient.func1(0xc0001b1a40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 78 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855e18, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a798, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a780, 0xc000203800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a780, 0xc000203800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166078, 0xc000203800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166078)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 79 [chan receive]:
+main.handleConnInClient.func1(0xc000155080)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 88 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855d48, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b118, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b100, 0xc000204c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b100, 0xc000204c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c200, 0xc000204c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c200)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 89 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855c78, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b198, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b180, 0xc00026a000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b180, 0xc00026a000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c208, 0xc00026a000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c208)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 90 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855ba8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b218, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b200, 0xc000203c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b200, 0xc000203c00, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c210, 0xc000203c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c210)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 91 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855ad8, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b298, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b280, 0xc00026a400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b280, 0xc00026a400, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c218, 0xc00026a400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c218)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 92 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855a08, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00019b318, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00019b300, 0xc000204800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00019b300, 0xc000204800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00010c220, 0xc000204800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00010c220)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 93 [chan receive]:
+main.handleConnInClient.func1(0xc0001b1b00)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 80 [chan receive]:
+main.handleConnInClient.func1(0xc000155140)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 81 [chan receive]:
+main.handleConnInClient.func1(0xc000155200)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 114 [chan receive]:
+main.handleConnInClient.func1(0xc0001552c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 115 [runnable]:
+internal/poll.runtime_pollWait(0x7f6cdf855938, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a818, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a800, 0xc00026ac00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a800, 0xc00026ac00, 0x400, 0x400, 0xc000246f20, 0x4414cc, 0x400)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166080, 0xc00026ac00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166080)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 116 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855868, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a898, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a880, 0xc00026b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a880, 0xc00026b000, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166088, 0xc00026b000, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166088)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 117 [IO wait]:
+internal/poll.runtime_pollWait(0x7f6cdf855798, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc00017a918, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00017a900, 0xc00026a800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc00017a900, 0xc00026a800, 0x400, 0x400, 0x61, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000166090, 0xc00026a800, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc000166090)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 119 [chan receive]:
+main.handleConnInClient.func1(0xc000155440)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 120 [copystack]:
+runtime.(*_type).typeOff(...)
+	/usr/local/go/src/runtime/type.go:254
+reflect.resolveTypeOff(0x5607e0, 0x16600, 0x0)
+	/usr/local/go/src/runtime/runtime1.go:483 +0x34
+reflect.(*rtype).typeOff(...)
+	/usr/local/go/src/reflect/type.go:693
+reflect.(*rtype).ptrTo(0x5607e0, 0x6)
+	/usr/local/go/src/reflect/type.go:1390 +0x35b
+reflect.Value.Addr(0x5607e0, 0xc0001b67c0, 0x198, 0x5d0900, 0x5607e0, 0x0)
+	/usr/local/go/src/reflect/value.go:247 +0x3a
+encoding/json.indirect(0x5607e0, 0xc0001b67c0, 0x198, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/usr/local/go/src/encoding/json/decode.go:452 +0x6b5
+encoding/json.(*decodeState).literalStore(0xc00027c000, 0xc00012d19b, 0xc, 0x65, 0x5607e0, 0xc0001b67c0, 0x198, 0x0, 0x61, 0xc00027c028)
+	/usr/local/go/src/encoding/json/decode.go:853 +0x266
+encoding/json.(*decodeState).value(0xc00027c000, 0x5607e0, 0xc0001b67c0, 0x198, 0x5607e0, 0xc0001b67c0)
+	/usr/local/go/src/encoding/json/decode.go:395 +0x1ef
+encoding/json.(*decodeState).object(0xc00027c000, 0x5570c0, 0xc0001b67c0, 0x16, 0xc00027c028, 0xc0001ad27b)
+	/usr/local/go/src/encoding/json/decode.go:763 +0x1899
+encoding/json.(*decodeState).value(0xc00027c000, 0x5570c0, 0xc0001b67c0, 0x16, 0xc000262c50, 0x4d2337)
+	/usr/local/go/src/encoding/json/decode.go:381 +0x6e
+encoding/json.(*decodeState).unmarshal(0xc00027c000, 0x5570c0, 0xc0001b67c0, 0xc00027c028, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:179 +0x1fe
+encoding/json.Unmarshal(0xc00012d193, 0x61, 0x6d, 0x5570c0, 0xc0001b67c0, 0x0, 0x0)
+	/usr/local/go/src/encoding/json/decode.go:106 +0x123
+main.handleConnInClient.func1(0xc000155500)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:58 +0xf3
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 94 [chan receive]:
+main.handleConnInClient.func1(0xc0001b1bc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+unexpected fault address 0xc0001a9010
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x2 addr=0xc0001a9010 pc=0x47fe3c]
+
+goroutine 28 [running]:
+runtime.throw(0x59c15f, 0x5)
+	/usr/local/go/src/runtime/panic.go:617 +0x72 fp=0xc00026b6f0 sp=0xc00026b6c0 pc=0x42c9d2
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:397 +0x401 fp=0xc00026b720 sp=0xc00026b6f0 pc=0x440821
+reflect.Value.MapKeys(0x56a940, 0xc0003ea070, 0x95, 0x1, 0x2, 0x0)
+	/usr/local/go/src/reflect/value.go:1149 +0x17c fp=0xc00026b798 sp=0xc00026b720 pc=0x47fe3c
+github.com/davecgh/go-spew/spew.(*dumpState).dump(0xc00026bb40, 0x56a940, 0xc0003ea070, 0x95)
+	/mnt/c/Users/zyyf/go/src/github.com/davecgh/go-spew/spew/dump.go:386 +0x311 fp=0xc00026b938 sp=0xc00026b798 pc=0x53aea1
+github.com/davecgh/go-spew/spew.(*dumpState).dump(0xc00026bb40, 0x5840c0, 0xc0003ea040, 0x99)
+	/mnt/c/Users/zyyf/go/src/github.com/davecgh/go-spew/spew/dump.go:421 +0xdca fp=0xc00026bad8 sp=0xc00026b938 pc=0x53b95a
+github.com/davecgh/go-spew/spew.fdump(0x6d1820, 0x5cc5c0, 0xc0000ac008, 0xc00026bc10, 0x1, 0x1)
+	/mnt/c/Users/zyyf/go/src/github.com/davecgh/go-spew/spew/dump.go:465 +0x15b fp=0xc00026bb80 sp=0xc00026bad8 pc=0x53c63b
+github.com/davecgh/go-spew/spew.Dump(...)
+	/mnt/c/Users/zyyf/go/src/github.com/davecgh/go-spew/spew/dump.go:508
+blockchainProject-changlianjie/Mynet.SendMessage(0xc000314627, 0xf, 0x59cf88, 0xa, 0xc000162f40, 0x14, 0xc0000a92a0, 0xf, 0xc0002ceea0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/Mynet/MessageTrans.go:32 +0x3da fp=0xc00026bcd8 sp=0xc00026bb80 pc=0x54061a
+main.handleConnInClient.func1(0xc0000809c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:159 +0x50e fp=0xc00026bfd8 sp=0xc00026bcd8 pc=0x54340e
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc00026bfe0 sp=0xc00026bfd8 pc=0x457d01
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 1 [IO wait]:
+internal/poll.runtime_pollWait(0x7fdb7c3e8ff8, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000ee098, 0x72, 0x0, 0x0, 0x59c57a)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc0000ee080, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1ba
+net.(*netFD).accept(0xc0000ee080, 0xc00016a001, 0x0, 0x0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc0000ac0e0, 0xc0000c3ea0, 0xc0000c3ea8, 0x10)
+	/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc0000ac0e0, 0x5a6148, 0x5cf0e0, 0xc00016a058, 0x0)
+	/usr/local/go/src/net/tcpsock.go:260 +0x48
+main.main()
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:305 +0x5a2
+
+goroutine 36 [IO wait]:
+internal/poll.runtime_pollWait(0x7fdb7c3e8e58, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc0000ee218, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0000ee200, 0xc0000cc400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc0000ee200, 0xc0000cc400, 0x400, 0x400, 0x5e, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc0000ac148, 0xc0000cc400, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc0000ac148)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+
+goroutine 37 [chan receive]:
+main.handleConnInClient.func1(0xc0000aeb40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 40 [chan receive]:
+main.handleConnInClient.func1(0xc0000aeba0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 4 [chan receive]:
+main.handleConnInClient.func1(0xc000012840)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 42 [chan receive]:
+main.handleConnInClient.func1(0xc0000aede0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 44 [chan receive]:
+main.handleConnInClient.func1(0xc0000af020)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 46 [chan receive]:
+main.handleConnInClient.func1(0xc0000af260)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 49 [chan receive]:
+main.handleConnInClient.func1(0xc00019fb60)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 6 [chan receive]:
+main.handleConnInClient.func1(0xc0000128a0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 8 [chan receive]:
+main.handleConnInClient.func1(0xc000012960)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 10 [chan receive]:
+main.handleConnInClient.func1(0xc000012a20)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 12 [chan receive]:
+main.handleConnInClient.func1(0xc000012ae0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 53 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca000)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 54 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca0c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 55 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca180)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 14 [chan receive]:
+main.handleConnInClient.func1(0xc000012ba0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 67 [chan receive]:
+main.handleConnInClient.func1(0xc00019fbc0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 57 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca240)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 69 [chan receive]:
+main.handleConnInClient.func1(0xc00019fc20)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 71 [chan receive]:
+main.handleConnInClient.func1(0xc00019fc80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 60 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca300)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 61 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca3c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 63 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca480)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 73 [chan receive]:
+main.handleConnInClient.func1(0xc00019fd40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 65 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca540)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 75 [chan receive]:
+main.handleConnInClient.func1(0xc00019fe00)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 83 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca600)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 77 [chan receive]:
+main.handleConnInClient.func1(0xc00019fec0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 85 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca6c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 80 [chan receive]:
+main.handleConnInClient.func1(0xc00019ff80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 81 [chan receive]:
+main.handleConnInClient.func1(0xc000222060)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 100 [chan receive]:
+main.handleConnInClient.func1(0xc000222120)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 101 [chan receive]:
+main.handleConnInClient.func1(0xc0002222a0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 87 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca780)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 104 [chan receive]:
+main.handleConnInClient.func1(0xc000222360)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 105 [chan receive]:
+main.handleConnInClient.func1(0xc000222420)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 93 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca840)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 94 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca900)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 95 [chan receive]:
+main.handleConnInClient.func1(0xc0001ca9c0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 96 [chan receive]:
+main.handleConnInClient.func1(0xc0001caa80)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 97 [chan receive]:
+main.handleConnInClient.func1(0xc0001cab40)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 24 [chan receive]:
+main.handleConnInClient.func1(0xc0000807e0)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 25 [chan receive]:
+main.handleConnInClient.func1(0xc000080840)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 26 [chan receive]:
+main.handleConnInClient.func1(0xc000080900)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 114 [chan receive]:
+main.handleConnInClient.func1(0xc00026c000)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:56 +0x70
+created by main.handleConnInClient
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:53 +0x8f
+
+goroutine 27 [IO wait]:
+internal/poll.runtime_pollWait(0x7fdb7c3eb000, 0x72, 0xffffffffffffffff)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000172918, 0x72, 0x400, 0x400, 0xffffffffffffffff)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc000172900, 0xc000262c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:169 +0x19b
+net.(*netFD).Read(0xc000172900, 0xc000262c00, 0x400, 0x400, 0x5a, 0x0, 0x13)
+	/usr/local/go/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00016a058, 0xc000262c00, 0x400, 0x400, 0x0, 0x0, 0x0)
+	/usr/local/go/src/net/net.go:177 +0x69
+main.handleConnInClient(0x5cf0e0, 0xc00016a058)
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:246 +0x177
+created by main.main
+	/mnt/c/Users/zyyf/go/src/blockchainProject-changlianjie/client.go:309 +0x58e
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12130: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18719: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17699: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:13299: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:14364: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12147: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15498: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:14364: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12147: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:14364: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12130: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12130: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12188: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12147: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:12188: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17699: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18712: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18719: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18719: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:17679: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:15419: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18710: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:16588: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:18715: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+2019/04/04 12:17:25 MessageTrans.go:33: dial tcp 127.0.0.1:11069: socket: cannot allocate memory
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55214->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55355->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55381->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55375->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55704->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55939->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55954->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55950->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55965->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55973->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55946->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55207->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55217->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55220->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55227->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55239->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55270->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55273->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55277->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55287->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55296->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55312->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55314->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55324->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55315->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55332->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55338->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55343->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55342->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55356->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55360->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55384->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55396->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55403->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55441->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55440->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55442->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55406->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55475->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55477->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55469->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55502->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55510->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55492->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55504->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55514->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55537->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55527->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55544->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55547->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55567->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55566->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55605->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55590->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55639->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55604->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55634->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55729->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55666->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55799->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55815->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55742->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55741->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55790->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55783->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55827->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55801->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55847->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55820->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55898->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55936->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55943->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55938->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55958->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55962->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55967->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55976->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55978->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55957->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55948->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55970->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55992->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55974->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55997->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56000->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55968->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56029->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56026->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56034->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56022->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56032->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:55986->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56040->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56041->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56046->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56093->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56081->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56069->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56104->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56113->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56116->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56077->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56118->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56089->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56138->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56115->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56109->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56119->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56126->127.0.0.1:18712: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56135->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56152->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56153->127.0.0.1:11063: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56179->127.0.0.1:15441: write: broken pipe
+F : (                            Mynet.Sender:  72) - write tcp 127.0.0.1:56130->127.0.0.1:15441: write: broken pipe
